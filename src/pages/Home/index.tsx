@@ -7,7 +7,7 @@ import logoImg from '../../assets/images/logo.svg';
 import Button from '../../components/Inputs/Button';
 import { useAuth } from '../../hooks/useAuth';
 import { database } from '../../services/firebase';
-import './../../styles/auth.scss';
+import './styles.scss';
 
 const Home = (): JSX.Element => {
     const history = useHistory();
@@ -32,6 +32,12 @@ const Home = (): JSX.Element => {
             alert('room does not exists');
             return;
         }
+
+        if (roomRef.val().endedAt) {
+            alert('Room does not exists');
+            return;
+        }
+
         history.push(`/rooms/${roomCode}`);
     }
 
